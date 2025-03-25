@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Real-Time_Exercise
-Exercises in TTK4145 Real-TIme programming
-=======
 Exercise 2 : Networking Essentials
 ==================================
 
