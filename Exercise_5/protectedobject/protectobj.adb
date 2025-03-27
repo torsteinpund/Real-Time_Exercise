@@ -6,7 +6,7 @@ with Ada.Containers.Vectors;
 
 procedure protectobj is
 
-    tick : Float := 0.033;
+    tick : Float := 0.016;
     package IntVec is new Ada.Containers.Vectors
         (Index_Type  => Natural,
         Element_Type => Integer);
@@ -30,14 +30,14 @@ procedure protectobj is
     end Resource;
     protected body Resource is
     
-        entry allocateLow(val: out IntVec.Vector) when True is
+        entry allocateLow(val: out IntVec.Vector) when not busy and allocateHigh'Count = 0 is
         begin
             --Put_Line("allocateLow");
             busy := True;
             val := value;
         end allocateLow;
     
-        entry allocateHigh(val: out IntVec.Vector) when True is
+        entry allocateHigh(val: out IntVec.Vector) when not busy is
         begin
             --Put_Line("allocateHigh");
             busy := True;
